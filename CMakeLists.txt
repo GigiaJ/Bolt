@@ -277,6 +277,13 @@ endif()
 if(NOT CEF_ROOT)
     set(CEF_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/cef/dist")
 endif()
+# Print all cached variables
+message(STATUS "Printing all cached variables:")
+get_cmake_property(_variableNames CACHE_VARIABLES)
+foreach (_variableName ${_variableNames})
+  message(STATUS "${_variableName}=${${_variableName}}")
+endforeach()
+
 if(NOT BOLT_CEF_DLLWRAPPER)
     set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CEF_ROOT}/cmake")
     find_package(CEF REQUIRED)
